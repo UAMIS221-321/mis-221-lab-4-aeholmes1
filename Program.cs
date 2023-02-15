@@ -46,33 +46,35 @@ static void PauseAction() {
     Console.ReadKey();
 }
 
-static void GetFull() {
+static void GetPartial() {
     Random rand = new Random();
-    int number = rand.Next(3, 10);
-    for (int r = 1; r <= number; r++) {
+    int rows = rand.Next(3, 10);
+    for (int r = 1; r <= rows; r++) {
         for (int s = 1; s <= r; s++) {
-            if (s == 1 || s == r || r == number) {
+            if (s == 1 || s == r || r == rows) {
                 System.Console.Write("0 ");
             }
-            else if (rand.Next(2) == 1 && int holes > 0) {
-                System.Console.WriteLine("  ");
-                holes--;
-            }
             else {
-                System.Console.WriteLine("0 ");
+                int number = new Random().Next(2);
+                if (number == 0) {
+                    System.Console.Write("0 ");
+                    }              
+            else {
+                System.Console.Write("  ");
+                }
             }
-        System.Console.WriteLine();
         }
+        System.Console.WriteLine();
     }
     PauseAction();
 }
 
-static void GetPartial() {
+static void GetFull() {
     Random rand = new Random();
     int number = rand.Next(3, 10);
     for (int r = 1; r <= number; r++) {
-        for (int s = 1; s <=2 * r - 1; s++)
-            System.Console.Write("0");
+        for (int s = 1; s <= r; s++)
+            System.Console.Write("0 ");
         System.Console.WriteLine();
     }
     PauseAction();
